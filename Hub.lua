@@ -1,6 +1,6 @@
 local lib = loadstring(game:HttpGet('https://raw.githubusercontent.com/TheoTheEpic/AquaLib/main/AquaLib.lua'))()
 
-if game.GameId == 621129760 then
+if game.GameId == 254394801 then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Support",
         Text = "Game Supported",
