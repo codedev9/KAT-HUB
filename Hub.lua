@@ -5,7 +5,7 @@ local window = lib.createWindow("Game Hub", "MainHub", true) -- Create the main 
 -- Player Tab
 local playerTab = window.createTab("Player Hacks")
 
-local playerSection = playerTab.createSection("Player Enhancements", false)
+local playerSection = playerTab.createSection("Player", false)
 
 playerSection.createSlider("Walkspeed", {defualt = 16, max = 100, min = 16}, function(value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
@@ -51,6 +51,10 @@ playerSection.createToggle("Xray", false, function(state)
         for _, part in pairs(workspace:GetDescendants()) do
             if part:IsA("BasePart") then
                 part.Transparency = 0
+                -- spawn locations are invisible for KAT
+                if part:IsA("SpawnLocation") then
+                    part.Transparency = 1
+                end
             end
         end
     end
