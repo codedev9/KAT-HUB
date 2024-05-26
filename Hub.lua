@@ -1,5 +1,21 @@
 local lib = loadstring(game:HttpGet('https://raw.githubusercontent.com/TheoTheEpic/AquaLib/main/AquaLib.lua'))()
 
+if game.GameId == 621129760 then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Support",
+        Text = "Game Supported",
+        Duration = 3
+    })
+    return
+else
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Support",
+        Text = "Game Not Supported",
+        Duration = 3
+    })
+    return
+end
+
 local window = lib.createWindow("Game Hub", "MainHub", true) -- Create the main window
 
 -- Player Tab
