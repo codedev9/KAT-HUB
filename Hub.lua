@@ -17,15 +17,43 @@ end)
 
 playerSection.createToggle("Noclip", false, function(state)
     if state then
+        Stepped = game:GetService("RunService").Stepped:Connect(function()
+                for a, b in pairs(Workspace:GetChildren()) do
+                if b.Name == Plr.Name then
+                for i, v in pairs(Workspace[Plr.Name]:GetChildren()) do
+                if v:IsA("BasePart") then
+                v.CanCollide = false
+                end end end end
+        end)
+    elseif not state then
+        Stepped:Disconnect()
     end
 end)
 
 playerSection.createToggle("InfJump", false, function(state)
-    infJumpEnabled = state
+    local InfiniteJumpEnabled = true
+    if state then
+        InfiniteJumpEnabled = true
+         game:GetService("UserInputService").JumpRequest:connect(function() if InfiniteJumpEnabled then game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping") end end)
+    elseif not state then
+        InfiniteJumpEnabled = false
+    end
 end)
 
 playerSection.createToggle("Xray", false, function(state)
-    xrayEnabled = state
+    if state then
+        for _, part in pairs(workspace:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.Transparency = 0.5
+            end
+        end
+    elseif not state then
+        for _, part in pairs(workspace:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.Transparency = 0
+            end
+        end
+    end
 end)
 
 -- Exploit Tab
